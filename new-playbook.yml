@@ -9,7 +9,7 @@
 
   vars:
     # --- YOUR TARGET CONTROLLER ---
-    controller_host: "https://44.204.152.112"
+    controller_host: "https://44.201.173.179"
     controller_user: "admin"
     controller_password: "Admin!Password!Gw" # Or hardcode: "your_password"
 
