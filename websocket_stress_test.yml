@@ -1,0 +1,36 @@
+---
+- hosts: all
+  gather_facts: false
+  connection: local
+  vars:
+    num_messages: 200
+  tasks:
+    - debug:
+        msg: "Burst 1 message: {{ item }}"
+      with_sequence: 'count={{ num_messages }}'
+
+    - debug:
+        msg: pause before burst 2
+      run_once: true
+
+    - pause:
+        seconds: 10
+
+    - debug:
+        msg: "Burst 2 message: {{ item }}"
+      with_sequence: 'count={{ num_messages }}'
+
+    - debug:
+        msg: pause before burst 3
+      run_once: true
+
+    - pause:
+        seconds: 10
+
+    - debug:
+        msg: "Burst 3 message: {{ item }}"
+      with_sequence: 'count={{ num_messages }}'
+
+    - debug:
+        msg: done
+      run_once: true
