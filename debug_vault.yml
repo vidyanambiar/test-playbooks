@@ -1,0 +1,9 @@
+---
+
+- hosts: all
+  gather_facts: false
+  connection: local
+  vars_files:
+    - vault_hello_world.yml
+  tasks:
+    - debug: var=msg

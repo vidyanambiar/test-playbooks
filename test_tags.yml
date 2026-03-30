@@ -33,5 +33,5 @@
   roles:
     - { role: test_tag_role, test_tag_role_msg: 'role_with_tag', tags: [ 'tag_role' ] }
 
-- include: test_tags_include.yml
+- import_playbook: test_tags_include.yml
   tags: tag_include

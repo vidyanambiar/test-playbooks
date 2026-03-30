@@ -1,6 +1,7 @@
 - name: Launch a Job Template
   {{ collection_id }}.tower_job_launch:
     job_template: "Demo Job Template"
+    request_timeout: 10
   register: job
 
 - assert:
@@ -12,26 +13,29 @@
   {{ collection_id }}.tower_job_list:
     query:
       id: "{{ '{{' }} job.id {{ '}}' }}"
+    request_timeout: 10
   register: matching_jobs
 
 - assert:
     that:
-      - "{{ '{{' }} matching_jobs.count {{ '}}' }} == 1"
+      - "matching_jobs.count == 1"
 
 - name: List failed jobs (which don't exist)
   {{ collection_id }}.tower_job_list:
     status: failed
-    query: 
+    query:
       id: "{{ '{{' }} job.id {{ '}}' }}"
+    request_timeout: 10
   register: successful_jobs
 
 - assert:
     that:
-      - "{{ '{{' }} successful_jobs.count {{ '}}' }} == 0"
+      - "successful_jobs.count == 0"
 
 - name: Get ALL result pages!
   {{ collection_id }}.tower_job_list:
     all_pages: True
+    request_timeout: 10
   register: all_page_query
 
 - assert:

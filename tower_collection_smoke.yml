@@ -21,7 +21,7 @@
         src: "{{ src_file }}"
         dest: "{{ dest_file }}"
 
-    - include: "{{ dest_file }}"
+    - include_tasks: "{{ dest_file }}"
 
     - name: "Delete dynamic playbook"
       file:
